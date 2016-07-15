@@ -1,0 +1,8 @@
+{
+  "name": "show-between",
+  "description": "Kirbytext Plugin for Kirby CMS to control visibility of content based on date",
+  "author": "Lucius Humm <lucius.humm@elage.ch>",
+  "version": "0.1.0",
+  "type": "kirby-plugin",
+  "license": "MIT"
+}
