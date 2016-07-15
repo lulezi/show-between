@@ -2,14 +2,13 @@
 
 kirbytext::$pre[] = function($kirbytext, $text) {
 
-  c::set('show-between.timezone', 'Europe/Zurich');
   $timeZone = c::get('show-between.timezone', date_default_timezone_get());
   $fromKeyword = c::get('show-between.from', 'from');
   $untilKeyword = c::get('show-between.until', 'until');
-  $fromOrUntil = '('.$fromKeyword.'|'.$untilKeyword.')';
 
+  $fromOrUntilRegex = '('.$fromKeyword.'|'.$untilKeyword.')';
   $dateRegex = '(\d{4}-\d{2}-\d{2})';
-  $regex = '!\('.$fromOrUntil.': ?'.$dateRegex.'( '.$fromOrUntil.': ?'.$dateRegex.')? (…|\.{3})\)(.*?)\((…|\.{3}) ?'.$fromOrUntil.'\)!is';
+  $regex = '!\('.$fromOrUntilRegex.': ?'.$dateRegex.'( '.$fromOrUntilRegex.': ?'.$dateRegex.')? (…|\.{3})\)(.*?)\((…|\.{3}) ?'.$fromOrUntilRegex.'\)!is';
 
   $text = preg_replace_callback($regex, function($matches) use($kirbytext, $timeZone, $fromKeyword, $untilKeyword) {
 
